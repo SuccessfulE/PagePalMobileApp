@@ -81,9 +81,9 @@ namespace PagePal_App
             Navigation.PushAsync(new RandomBook());
         }
 
-        private void Button_Clicked_AllBooks(object sender, EventArgs e)
+        private async void Button_Clicked_AllBooks(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AllBooks());
+            await Navigation.PushAsync(new AllBooks());
         }
 
         private void Button_Clicked_Login(object sender, EventArgs e)
@@ -100,6 +100,5 @@ namespace PagePal_App
             Navigation.InsertPageBefore(new LoginPage(), this);
             await Navigation.PopAsync();
         }
-
     }
 }
