@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PagePal_App.BookPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="titleLabel" Text="Book Title" FontSize="Medium" />
+
+            <Label x:Name="authorLabel" Text="Author" FontSize="Small" />
+
+            <Label x:Name="genreLabel" Text="Genre" FontSize="Small" />
+
+            <Label x:Name="publicationLabel" Text="Publication" FontSize="Small" />
+
+            <Label x:Name="yearLabel" Text="Year" FontSize="Small" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

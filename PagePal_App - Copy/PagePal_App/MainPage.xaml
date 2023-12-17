@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PagePal_App.MainPage"
+             Title="PagePal Homepage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Profile"
+                     Clicked="Profile_Clicked" Order="Secondary"/>
+        <ToolbarItem Text="Signout"
+                     Clicked="Signout_Clicked" Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label x:Name="LoggedIn" HorizontalTextAlignment="Center" TextColor="White" FontSize="28" />
+        </Frame>
+
+        <Label x:Name="UserIN" HorizontalTextAlignment="Center" TextColor="Black" FontSize="18" />
+
+        <Label Text="Enter your filters below and then click 'Filtered Book' to randomly select a book using those filters to read. Click 'Add Book' to add more books to your list. Click ‘Random’ to choose a book with no filters." 
+               HorizontalTextAlignment="Start" FontSize="20" Padding="30,10,30,10"/>
+
+        <Label FontSize="16" Padding="30,24,30,0">
+        </Label>
+
+        <StackLayout>
+            <Picker x:Name="genrePicker" Title="Genre" HorizontalOptions="Fill">
+                <Picker.Items>
+                    <x:String>Fantasy</x:String>
+                    <x:String>Fiction</x:String>
+                    <x:String>Mystery/Thriller</x:String>
+                    <x:String>Science Fiction</x:String>
+                    <x:String>Romance</x:String>
+                    <x:String>Historical Fiction</x:String>
+                    <x:String>Non-Fiction</x:String>
+                    <x:String>Biography</x:String>
+                    <x:String>Dystopian</x:String>
+                    <x:String>Young Adult</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker x:Name="authorPicker" Title="Author" HorizontalOptions="Fill">
+            </Picker>
+        </StackLayout>
+        <Button Text="Filtered Book"
+                Clicked="Button_Clicked">
+        </Button>
+        <Button Text="Add Book"
+                Clicked="Button_Clicked1">
+        </Button>
+        <Button Text="Random Book"
+                Clicked="Button_Clicked2">
+        </Button>
+        <Button Text="All Books"
+                Clicked="Button_Clicked_AllBooks">
+        </Button>
+        <Button Text="Log Out"
+                Clicked="Button_Clicked_Login">
+        </Button>
+
+    </StackLayout>
+
+</ContentPage>
