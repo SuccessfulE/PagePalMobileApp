@@ -10,7 +10,9 @@
                Placeholder="Author Last Name" />
             <Entry x:Name="AuthorFirstName"
                Placeholder="Author First Name" />
-            <Picker x:Name="genrePicker" Title="Select genre" >
+            <Entry x:Name="genreEntry" Placeholder="Enter Genre" />
+
+            <!--<Picker x:Name="genrePicker" Title="Select genre" >
                 <Picker.Items>
                     <x:String>Fantasy</x:String>
                     <x:String>Fiction</x:String>
@@ -23,7 +25,7 @@
                     <x:String>Dystopian</x:String>
                     <x:String>Young Adult</x:String>
                 </Picker.Items>
-            </Picker>
+            </Picker>-->
 
             <Button Text="Add to Database"
                 Clicked="SaveButton_Clicked" />
