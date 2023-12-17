@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 namespace PagePal_App

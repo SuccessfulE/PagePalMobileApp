@@ -26,17 +26,20 @@ namespace PagePal_App
             BookTitle.Text = emp.BookTitle;
             AuthorLastName.Text = emp.AuthorLastName;
             AuthorFirstName.Text = emp.AuthorFirstName;
-            genrePicker.SelectedItem = emp.Genre;
+            genreEntry.Text = emp.Genre;
             BookTitle.Focus();
         }
 
         private async void SaveButton_Clicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(BookTitle.Text) || string.IsNullOrEmpty(AuthorLastName.Text) || string.IsNullOrEmpty(AuthorFirstName.Text) || IsRequired(genrePicker))
+            if (string.IsNullOrEmpty(BookTitle.Text) ||
+                string.IsNullOrEmpty(AuthorLastName.Text) ||
+                string.IsNullOrEmpty(AuthorFirstName.Text) ||
+                string.IsNullOrEmpty(genreEntry.Text))
             {
                 await DisplayAlert("Error", "Please fill in all required fields.", "OK");
             }
-            else if(_bewks != null)
+            else if (_bewks != null)
             {
                 UpdateBook();
             }
@@ -47,7 +50,7 @@ namespace PagePal_App
                     BookTitle = BookTitle.Text,
                     AuthorLastName = AuthorLastName.Text,
                     AuthorFirstName = AuthorFirstName.Text,
-                    Genre = genrePicker.SelectedItem?.ToString(),
+                    Genre = genreEntry.Text,
                 };
                 // Save the new book to the database using the SaveBookAsync method
                 await App.Database.SaveBookAsync(newBook);
@@ -57,7 +60,7 @@ namespace PagePal_App
             }
         }
 
-        private bool IsRequired(View view)
+      /*  private bool IsRequired(View view)
         {
             // This is just to check if the required fields have input or not.
             if (view is Entry entry && entry.Placeholder != null && entry.Placeholder.Contains("Enter") && string.IsNullOrEmpty(entry.Text))
@@ -68,14 +71,14 @@ namespace PagePal_App
                 return false;
 
             return false;
-        }
+        }*/
 
         async void UpdateBook()
         {
             _bewks.BookTitle = BookTitle.Text;
             _bewks.AuthorLastName = AuthorLastName.Text;
             _bewks.AuthorFirstName = AuthorFirstName.Text;
-            _bewks.Genre = genrePicker.SelectedItem?.ToString();
+            _bewks.Genre = genreEntry.Text;
             await App.Database.UpdateBook(_bewks);
             await Navigation.PopAsync();
         }
