@@ -23,14 +23,14 @@ namespace PagePal_App
             public string GenrePublication { get { return Publication + " " + Genre; } }
         }
 
-        [Table("authors")]
+        /*[Table("authors")]
         public class Authors
         {
             [PrimaryKey, AutoIncrement]
             public int AuthorID { get; set; }
             public string ALastName { get; set; }
             public string AFirstName { get; set; }
-        }
+        }*/
 
         [Table("bookdetails")]
         public class BookDetails

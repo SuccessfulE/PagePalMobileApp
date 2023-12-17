@@ -31,7 +31,7 @@ namespace PagePal_App
         public async Task<List<string>> GetDistinctGenresAsync()
         {
             // Fetch all book details
-            var bookDetailsList = await _database.Table<BookDetails>().ToListAsync();
+            var bookDetailsList = await _database.Table<Books>().ToListAsync();
 
             // Extract and return distinct genres
             var distinctGenres = bookDetailsList.Select(bookDetail => bookDetail.Genre)
@@ -53,7 +53,7 @@ namespace PagePal_App
 
 
         //Get books based on filters
-        public async Task<List<BookTables.Books>> GetBooksBasedOnFiltersAsync(string genre, string[] authorNames)
+        /*public async Task<List<BookTables.Books>> GetBooksBasedOnFiltersAsync(string genre, string[] authorNames)
         {
             // Create a base query to retrieve books
             var query = _database.Table<BookTables.Books>();
@@ -70,7 +70,31 @@ namespace PagePal_App
             }
             // Execute the query and return the results
             return await query.ToListAsync();
+        }*/
+        public async Task<List<BookTables.Books>> GetBooksBasedOnFiltersAsync(string genre, string[] authorNames)
+        {
+            var query = _database.Table<BookTables.Books>();
+
+            if (!string.IsNullOrEmpty(genre))
+            {
+                query = query.Where(b => b.Genre == genre);
+            }
+
+            if (authorNames != null)
+            {
+                string firstName = authorNames.Length > 0 ? authorNames[0] : string.Empty;
+                string lastName = authorNames.Length > 1 ? authorNames[1] : string.Empty;
+
+                if (!string.IsNullOrEmpty(firstName) || !string.IsNullOrEmpty(lastName))
+                {
+                    query = query.Where(b => (firstName == string.Empty || b.AuthorFirstName == firstName) &&
+                                             (lastName == string.Empty || b.AuthorLastName == lastName));
+                }
+            }
+
+            return await query.ToListAsync();
         }
+
         //SaveBook
         public Task<int> SaveBookAsync(BookTables.Books book)
         {
