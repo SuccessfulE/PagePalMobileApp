@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace PagePal_App
                 var userList = new List<BookTables.Users> { currentUser };
                 myCollectionView.ItemsSource = userList;
             }
-            
+
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error loading user profile: {ex.Message}");

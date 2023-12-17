@@ -14,17 +14,7 @@ namespace PagePal_App
         {
             InitializeComponent();
         }
-        //public void Button_Clicked(object sender, EventArgs e)
-        //{
-        //if(txtUsername.Text == "Username123" && txtPassword.Text == "123456")
-        //{
-        //Navigation.PushAsync(new MainPage());
-        //}
-        //else
-        //{
-        //DisplayAlert("Oops..", "Username/Password incorrect.", "OK");
-        //}
-        //}
+
         async void Button_Clicked(object sender, EventArgs e)
         {
             var user = new BookTables.Users

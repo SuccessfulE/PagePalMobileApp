@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PagePal_App.MainPage"
-             Title="PagePal Homepage">
+             Title="PagePal">
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Profile"
                      Clicked="Profile_Clicked" Order="Secondary"/>

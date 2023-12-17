@@ -8,7 +8,6 @@ namespace PagePal_App
 {
     public class BookTables
     {
-
         [Table("books")]
         public class Books
         {

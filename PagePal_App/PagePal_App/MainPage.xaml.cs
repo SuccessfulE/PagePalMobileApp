@@ -5,6 +5,7 @@ using System.Text;
 using PagePal_App;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static PagePal_App.BookTables;
 
 namespace PagePal_App
 {
@@ -83,7 +84,7 @@ namespace PagePal_App
 
         private async void Button_Clicked_AllBooks(object sender, EventArgs e)
         {
-           await Navigation.PushAsync(new AllBooks());
+            await Navigation.PushAsync(new AllBooks());
         }
 
         private void Button_Clicked_Login(object sender, EventArgs e)
