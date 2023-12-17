@@ -2,8 +2,10 @@
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static PagePal_App.BookTables;
 namespace PagePal_App
 {
     public class Database
@@ -24,6 +26,18 @@ namespace PagePal_App
         public Task<List<BookTables.Books>> GetDistinctAuthorsAsync()
         {
             return _database.Table<BookTables.Books>().ToListAsync();
+        }
+        //Get Genres
+        public async Task<List<string>> GetDistinctGenresAsync()
+        {
+            // Fetch all book details
+            var bookDetailsList = await _database.Table<BookDetails>().ToListAsync();
+
+            // Extract and return distinct genres
+            var distinctGenres = bookDetailsList.Select(bookDetail => bookDetail.Genre)
+                                                .Distinct()
+                                                .ToList();
+            return distinctGenres;
         }
         //Get Users
         public Task<List<BookTables.Users>> GetUsers()

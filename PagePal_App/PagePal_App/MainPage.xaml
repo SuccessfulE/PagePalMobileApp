@@ -24,19 +24,19 @@
         </Label>
 
         <StackLayout>
-            <Picker x:Name="genrePicker" Title="Genre" HorizontalOptions="Fill">
-                <Picker.Items>
-                    <x:String>Fantasy</x:String>
-                    <x:String>Fiction</x:String>
-                    <x:String>Mystery/Thriller</x:String>
-                    <x:String>Science Fiction</x:String>
-                    <x:String>Romance</x:String>
-                    <x:String>Historical Fiction</x:String>
-                    <x:String>Non-Fiction</x:String>
-                    <x:String>Biography</x:String>
-                    <x:String>Dystopian</x:String>
-                    <x:String>Young Adult</x:String>
-                </Picker.Items>
+            <Picker x:Name="genrePicker" Title="Genre" HorizontalOptions="FillAndExpand">
+            <!--<picker.items>
+                    <x:string>fantasy</x:string>
+                    <x:string>fiction</x:string>
+                    <x:string>mystery/thriller</x:string>
+                    <x:string>science fiction</x:string>
+                    <x:string>romance</x:string>
+                    <x:string>historical fiction</x:string>
+                    <x:string>non-fiction</x:string>
+                    <x:string>biography</x:string>
+                    <x:string>dystopian</x:string>
+                    <x:string>young adult</x:string>
+                </picker.items>-->
             </Picker>
             <Picker x:Name="authorPicker" Title="Author" HorizontalOptions="Fill">
             </Picker>

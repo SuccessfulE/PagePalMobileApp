@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using PagePal_App;
@@ -18,6 +19,7 @@ namespace PagePal_App
         {
             InitializeComponent();
             LoadAuthors();
+            LoadGenres();
             //string name = App.UserName;
             LoggedIn.Text = "Welcome to PagePal";
             UserIN.Text = "User: " + App.UserName;
@@ -39,10 +41,33 @@ namespace PagePal_App
             }
             else
             {
-                // If no authors in the database, provide a default placeholder or handle it as needed
+                // If no authors in the database, provide a default placeholder
                 authorPicker.Items.Add("No Authors Found");
             }
         }
+
+        private async void LoadGenres()
+        {
+            try
+            {
+                var genres = await App.Database.GetDistinctGenresAsync();
+                if (genres != null && genres.Any())
+                {
+                    genrePicker.ItemsSource = genres;
+                }
+                else
+                {
+                    genrePicker.Items.Add("No Genres Found");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                Debug.WriteLine($"Error loading genres: {ex.Message}");
+                await DisplayAlert("Error", "An error occurred while loading genres.", "OK");
+            }
+        }
+
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
