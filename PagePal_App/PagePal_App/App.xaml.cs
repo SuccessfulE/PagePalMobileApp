@@ -9,8 +9,9 @@ namespace PagePal_App
 {
     public partial class App : Application
     {
+        public static bool IsUserLoggedIn { get; set; }
+        public static string UserName { get; set; }
         private static Database database;
-
         public static Database Database
         {
             get
@@ -23,12 +24,17 @@ namespace PagePal_App
                 return database;
             }
         }
-
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage (new MainPage());
+            if (!IsUserLoggedIn)
+            {
+                MainPage = new NavigationPage(new LoginPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new MainPage());
+            }
         }
 
         protected override void OnStart()

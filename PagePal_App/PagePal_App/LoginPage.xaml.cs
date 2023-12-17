@@ -18,16 +18,46 @@ namespace PagePal_App
             InitializeComponent();
         }
 
-        public void Button_Clicked(object sender, EventArgs e)
+        async void Button_Clicked(object sender, EventArgs e)
         {
-            if(txtUsername.Text == "Username123" && txtPassword.Text == "123456")
+            var user = new BookTables.Users
             {
-                Navigation.PushAsync(new MainPage());
+                UUsername = txtUsername.Text,
+                UPassword = txtPassword.Text
+            };
+
+            if (string.IsNullOrEmpty(txtPassword.Text) || string.IsNullOrEmpty(txtUsername.Text))
+
+                if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
+                {
+                    await DisplayAlert("Error", "Username and Password cannot be empty", "OK");
+                    return;
+                }
+
+            var isValid = await AreCredentialsCorrect(user);
+            if (isValid)
+            {
+                App.UserName = txtUsername.Text;
+                App.IsUserLoggedIn = true;
+                Navigation.InsertPageBefore(new MainPage(), this);
+                await Navigation.PopAsync();
             }
             else
             {
-                DisplayAlert("Oops..", "Username/Password incorrect.", "OK");
+                await DisplayAlert("Login Failed", "Invalid Username or Password", "OK");
             }
+        }
+
+        public async Task<bool> AreCredentialsCorrect(BookTables.Users user)
+        {
+            var storedUser = await App.Database.GetUserByUsernameAsync(user.UUsername);
+            return storedUser != null && storedUser.UPassword == user.UPassword;
+        }
+
+
+        void Handle_Tapped(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new SignUp());
         }
     }
 }

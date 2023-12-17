@@ -14,7 +14,7 @@ namespace PagePal_App
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<BookTables.Books>();
-
+            _database.CreateTableAsync<BookTables.Users>();
         }
 
         //Get books
@@ -26,8 +26,20 @@ namespace PagePal_App
         //Get Authors
         public Task<List<BookTables.Books>> GetDistinctAuthorsAsync()
         {
-            return _database.Table<BookTables.Books>().ToListAsync(); 
+            return _database.Table<BookTables.Books>().ToListAsync();
         }
+        //Get Users
+        public Task<List<BookTables.Users>> GetUsers()
+        {
+            return _database.Table<BookTables.Users>().ToListAsync();
+        }
+
+        //Get users by username for login purposes. 
+        public Task<BookTables.Users> GetUserByUsernameAsync(string username)
+        {
+            return _database.Table<BookTables.Users>().FirstOrDefaultAsync(u => u.UUsername == username);
+        }
+
 
         //Get books based on filters
         public async Task<List<BookTables.Books>> GetBooksBasedOnFiltersAsync(string genre, string[] authorNames)
@@ -51,25 +63,49 @@ namespace PagePal_App
             // Execute the query and return the results
             return await query.ToListAsync();
         }
-
+        //SaveBook
         public Task<int> SaveBookAsync(BookTables.Books book)
         {
             return _database.InsertAsync(book);
         }
-
+        //DeleteEntireDatabase
         public Task<int> DeleteAllItems<T>()
         {
             return _database.DeleteAllAsync<T>();
         }
-
+        //UpdateBook
         public Task<int> UpdateBook(BookTables.Books book)
         {
             return _database.UpdateAsync(book);
         }
-
-        public Task<int> DeleteBook (BookTables.Books book)
+        //Delete Book
+        public Task<int> DeleteBook(BookTables.Books book)
         {
             return _database.DeleteAsync(book);
+        }
+        //Check if User exists
+        public Task<BookTables.Users> GetUserByEmailAsync(string email)
+        {
+            return _database.Table<BookTables.Users>().FirstOrDefaultAsync(u => u.email == email);
+        }
+        //Save User
+        public Task<int> SaveUserAsync(BookTables.Users users)
+        {
+            return _database.InsertAsync(users);
+        }
+        //Update User
+        public Task<int> UpdateUser(BookTables.Users users)
+        {
+            return _database.UpdateAsync(users);
+        }
+        //Delete User
+        public Task<int> DeleteUser(BookTables.Users users)
+        {
+            return _database.DeleteAsync(users);
+        }
+        public Task<List<BookTables.Users>> GetLoggedIn()
+        {
+            return _database.Table<BookTables.Users>().ToListAsync();
         }
     }
 }
