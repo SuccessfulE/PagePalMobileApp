@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PagePal_App.MainPage"
-             Title="PagePal">
+             Title="PagePal Home">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Profile"
@@ -11,16 +11,15 @@
                      Clicked="Signout_Clicked" Order="Secondary"/>
     </ContentPage.ToolbarItems>
     <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label x:Name="LoggedIn" HorizontalTextAlignment="Center" TextColor="White" FontSize="28" />
-        </Frame>
+        <Image Source="https://drive.google.com/uc?id=1psXi504G1orQ5z8vy3ZwvAx4LhMbDQjb"></Image>
+        <Label x:Name="LoggedIn" HorizontalTextAlignment="Center" TextColor="Black" FontSize="28" />
 
         <Label x:Name="UserIN" HorizontalTextAlignment="Center" TextColor="Black" FontSize="18" />
 
-        <Label Text="Enter your filters below and then click 'Filtered Book' to randomly select a book using those filters to read. Click 'Add Book' to add more books to your list. Click ‘Random’ to choose a book with no filters." 
+        <Label Text="Please select your filters to get a random filtered result. Click 'Random Book' to get a random book." 
                HorizontalTextAlignment="Start" FontSize="20" Padding="30,10,30,10"/>
 
-        <Label FontSize="16" Padding="30,24,30,0">
+        <Label FontSize="5" Padding="20,14,20,0">
         </Label>
 
         <StackLayout>
@@ -52,9 +51,6 @@
         </Button>
         <Button Text="All Books"
                 Clicked="Button_Clicked_AllBooks">
-        </Button>
-        <Button Text="Log Out"
-                Clicked="Button_Clicked_Login">
         </Button>
 
     </StackLayout>

@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PagePal_App.ProfilePage">
+             x:Class="PagePal_App.ProfilePage"
+             Title ="Profile Page">
+
     <ContentPage.Content>
         <StackLayout>
             <Label x:Name="UserProfile" HorizontalTextAlignment="Center" TextColor="Black" FontSize="30"/>
@@ -17,10 +19,6 @@
                                         BackgroundColor ="LightBlue"
                                         CommandParameter="{Binding .}"
                                         Invoked ="SwipeItem_Invoked"/>
-                                    <SwipeItem Text ="Delete"
-                                        BackgroundColor ="IndianRed"
-                                        CommandParameter="{Binding .}"
-                                        Invoked ="SwipeItem_Invoked_1"/>
                                 </SwipeItems>
                             </SwipeView.RightItems>
                             <Grid RowSpacing="0">
@@ -30,6 +28,9 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                </Grid.ColumnDefinitions>
                                 <Label Text="{Binding UUsername}" Grid.Row="0" Grid.Column="1" FontSize="20" FontAttributes="Bold"/>
                                 <Label Text="{Binding email}" Grid.Row="1" Grid.Column="1"/>
                                 <Label Text="{Binding UFirstName}" Grid.Row="2" Grid.Column="1"/>

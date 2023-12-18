@@ -5,6 +5,7 @@
              Title ="Login Page">
     <ContentPage.Content>
     <StackLayout>
+            <Image Source="https://drive.google.com/uc?id=1DXDzsSNv29e09JLbkSV0_kx8pFBbvjO7"></Image>
             <Label Text="Hello, Please Log In" HorizontalOptions="Center" TextColor="Black" FontSize="20"></Label>
             <Entry x:Name="txtUsername" Placeholder="Username"
                    TextColor="Black"

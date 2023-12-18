@@ -76,6 +76,7 @@ namespace PagePal_App
 
             await App.Database.SaveUserAsync(newUser);
             await DisplayAlert("Success", "Registration Successful!", "OK");
+            await Navigation.PopAsync();
             await NavigateToMainPage();
         }
 
@@ -90,14 +91,16 @@ namespace PagePal_App
             await App.Database.UpdateUser(_Users);
             await DisplayAlert("Success", "User Updated Successfully", "OK");
             // Navigate to the MainPage
-            await NavigateToMainPage();
+            await Navigation.PopAsync();
+            await NavigateToLoginPage();
+
         }
         private async Task NavigateToMainPage()
         {
             await Navigation.PushAsync(new LoginPage());
         }
 
-        private async Task NavigateToProfilePage()
+        private async Task NavigateToLoginPage()
         {
             await Navigation.PushAsync(new ProfilePage());
         }

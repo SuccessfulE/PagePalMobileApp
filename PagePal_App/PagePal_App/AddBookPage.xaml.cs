@@ -57,21 +57,22 @@ namespace PagePal_App
 
                 // Display a success message
                 await DisplayAlert("Success", "Book saved successfully!", "OK");
+                await Navigation.PopAsync();
             }
         }
 
-      /*  private bool IsRequired(View view)
-        {
-            // This is just to check if the required fields have input or not.
-            if (view is Entry entry && entry.Placeholder != null && entry.Placeholder.Contains("Enter") && string.IsNullOrEmpty(entry.Text))
-                return false;
-            else if (view is Picker picker && picker.Title != null && picker.Title.Contains("Select") && picker.SelectedItem == null)
-                return true;
-            else if (view is DatePicker datePicker && datePicker.Date == DateTime.MinValue)
-                return false;
+        /*  private bool IsRequired(View view)
+          {
+              // This is just to check if the required fields have input or not.
+              if (view is Entry entry && entry.Placeholder != null && entry.Placeholder.Contains("Enter") && string.IsNullOrEmpty(entry.Text))
+                  return false;
+              else if (view is Picker picker && picker.Title != null && picker.Title.Contains("Select") && picker.SelectedItem == null)
+                  return true;
+              else if (view is DatePicker datePicker && datePicker.Date == DateTime.MinValue)
+                  return false;
 
-            return false;
-        }*/
+              return false;
+          }*/
 
         async void UpdateBook()
         {
@@ -80,6 +81,7 @@ namespace PagePal_App
             _bewks.AuthorFirstName = AuthorFirstName.Text;
             _bewks.Genre = genreEntry.Text;
             await App.Database.UpdateBook(_bewks);
+            await DisplayAlert("Success", "Book updated successfully!", "OK");
             await Navigation.PopAsync();
         }
     }

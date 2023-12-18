@@ -48,10 +48,10 @@ namespace PagePal_App
         }
 
 
-    private async void OnButtonDelete(object sender, EventArgs e)
+    /*private async void OnButtonDelete(object sender, EventArgs e)
         {
             await App.Database.DeleteAllItems<BookTables.Books>();
             BookCollection.Clear();
-        }
+        }*/
     }
 }

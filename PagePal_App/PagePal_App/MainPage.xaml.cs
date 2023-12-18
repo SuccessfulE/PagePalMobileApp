@@ -23,6 +23,18 @@ namespace PagePal_App
             //string name = App.UserName;
             LoggedIn.Text = "Welcome to PagePal";
             UserIN.Text = "User: " + App.UserName;
+            OnAppearing();
+        }
+
+        protected override async void OnAppearing()
+        {
+            try
+            {
+                base.OnAppearing();
+                await App.Database.GetDistinctAuthorsAsync();
+                await App.Database.GetDistinctGenresAsync();
+            }
+            catch { }
         }
 
         private void LoadAuthors()
@@ -117,7 +129,7 @@ namespace PagePal_App
                 {
                     Random random = new Random();
                     var randomBook = filteredBooks[random.Next(filteredBooks.Count)];
-                    await DisplayAlert("Random Book", $"Title: {randomBook.BookTitle}\nAuthor: {randomBook.AuthorLastName} {randomBook.AuthorFirstName}\nGenre: {randomBook.Genre}", "OK");
+                    await DisplayAlert("Filtered Book", $"Title: {randomBook.BookTitle}\nAuthor: {randomBook.AuthorLastName} {randomBook.AuthorFirstName}\nGenre: {randomBook.Genre}", "OK");
                 }
                 else
                 {
