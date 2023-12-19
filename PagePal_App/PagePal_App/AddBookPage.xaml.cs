@@ -57,21 +57,19 @@ namespace PagePal_App
 
                 // Display a success message
                 await DisplayAlert("Success", "Book saved successfully!", "OK");
+
+                // Clear all fields after successful save
+                ClearFields();
             }
         }
 
-      /*  private bool IsRequired(View view)
+        private void ClearFields()
         {
-            // This is just to check if the required fields have input or not.
-            if (view is Entry entry && entry.Placeholder != null && entry.Placeholder.Contains("Enter") && string.IsNullOrEmpty(entry.Text))
-                return false;
-            else if (view is Picker picker && picker.Title != null && picker.Title.Contains("Select") && picker.SelectedItem == null)
-                return true;
-            else if (view is DatePicker datePicker && datePicker.Date == DateTime.MinValue)
-                return false;
-
-            return false;
-        }*/
+            BookTitle.Text = string.Empty;
+            AuthorLastName.Text = string.Empty;
+            AuthorFirstName.Text = string.Empty;
+            genreEntry.Text = string.Empty;
+        }
 
         async void UpdateBook()
         {
@@ -82,5 +80,6 @@ namespace PagePal_App
             await App.Database.UpdateBook(_bewks);
             await Navigation.PopAsync();
         }
+
     }
 }

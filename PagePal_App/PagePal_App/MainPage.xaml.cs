@@ -25,7 +25,7 @@ namespace PagePal_App
             UserIN.Text = "User: " + App.UserName;
         }
 
-        private void LoadAuthors()
+        /*private void LoadAuthors()
         {
             // Retrieve distinct authors from the database
             var authors = App.Database.GetDistinctAuthorsAsync().Result;
@@ -44,7 +44,29 @@ namespace PagePal_App
                 // If no authors in the database, provide a default placeholder
                 authorPicker.Items.Add("No Authors Found");
             }
+        }*/
+
+        private async void LoadAuthors()
+        {
+            // Retrieve distinct authors from the database asynchronously
+            var authors = await App.Database.GetDistinctAuthorsAsync();
+
+            // Check if there are authors in the database
+            if (authors.Any())
+            {
+                // Populate the Author Picker with the retrieved authors
+                foreach (var author in authors)
+                {
+                    authorPicker.Items.Add(string.Format("{0} {1}", author.FirstName, author.LastName));
+                }
+            }
+            else
+            {
+                // If no authors in the database, provide a default placeholder
+                authorPicker.Items.Add("No Authors Found");
+            }
         }
+
 
         private async void LoadGenres()
         {
