@@ -61,19 +61,6 @@ namespace PagePal_App
             }
         }
 
-        /*  private bool IsRequired(View view)
-          {
-              // This is just to check if the required fields have input or not.
-              if (view is Entry entry && entry.Placeholder != null && entry.Placeholder.Contains("Enter") && string.IsNullOrEmpty(entry.Text))
-                  return false;
-              else if (view is Picker picker && picker.Title != null && picker.Title.Contains("Select") && picker.SelectedItem == null)
-                  return true;
-              else if (view is DatePicker datePicker && datePicker.Date == DateTime.MinValue)
-                  return false;
-
-              return false;
-          }*/
-
         async void UpdateBook()
         {
             _bewks.BookTitle = BookTitle.Text;

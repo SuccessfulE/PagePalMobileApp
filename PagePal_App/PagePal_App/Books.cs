@@ -17,10 +17,7 @@ namespace PagePal_App
             public string AuthorLastName { get; set; }
             public string AuthorFirstName { get; set; }
             public string FirstLastName { get { return AuthorFirstName + " " + AuthorLastName; } }
-            public DateTime yearEntry { get; set; }
             public string Genre { get; set; }
-            public string Publication { get; set; }
-            public string GenrePublication { get { return Publication + " " + Genre; } }
         }
 
         /*[Table("authors")]
@@ -39,7 +36,6 @@ namespace PagePal_App
             public int BookID { get; set; }
             public string BTitle { get; set; }
             public string Genre { set; get; }
-            public string BPublication { get; set; }
         }
 
         [Table("toread")]

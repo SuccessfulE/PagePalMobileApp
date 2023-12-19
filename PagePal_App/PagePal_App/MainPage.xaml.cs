@@ -80,35 +80,6 @@ namespace PagePal_App
             }
         }
 
-
-        /* private async void Button_Clicked(object sender, EventArgs e)
-         {
-             // Get selected filters
-             string selectedGenre = genrePicker.SelectedItem as string;
-             string selectedAuthor = authorPicker.SelectedItem as string;
-
-             // Split the selected author into first and last name
-             string[] authorNames = selectedAuthor?.Split(' ');
-
-             // Retrieve books based on filters
-             var filteredBooks = await App.Database.GetBooksBasedOnFiltersAsync(selectedGenre, authorNames);
-
-             // Check if there are books that match the filters
-             if (filteredBooks.Any())
-             {
-                 // Select a random book from the filtered list
-                 Random random = new Random();
-                 var randomBook = filteredBooks[random.Next(filteredBooks.Count)];
-
-                 // Display information about the randomly selected book (you can modify this as needed)
-                 await DisplayAlert("Random Book", $"Title: {randomBook.BookTitle}\nAuthor: {randomBook.AuthorLastName} {randomBook.AuthorFirstName}\nGenre: {randomBook.Genre}\n", "OK");
-             }
-             else
-             {
-                 await DisplayAlert("Error", "No books found with the specified filters.", "OK");
-             }
-         }*/
-
         private async void Button_Clicked(object sender, EventArgs e)
         {
             try
@@ -142,7 +113,6 @@ namespace PagePal_App
                 await DisplayAlert("Error", "An error occurred while processing your request.", "OK");
             }
         }
-
 
         private void Button_Clicked1(object sender, EventArgs e)
         {
