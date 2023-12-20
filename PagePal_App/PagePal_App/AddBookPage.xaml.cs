@@ -57,8 +57,20 @@ namespace PagePal_App
 
                 // Display a success message
                 await DisplayAlert("Success", "Book saved successfully!", "OK");
+
+                // Clear all fields after successful save
+                ClearFields();
+
                 await Navigation.PopAsync();
             }
+        }
+
+        private void ClearFields()
+        {
+            BookTitle.Text = string.Empty;
+            AuthorLastName.Text = string.Empty;
+            AuthorFirstName.Text = string.Empty;
+            genreEntry.Text = string.Empty;
         }
 
         async void UpdateBook()
@@ -71,5 +83,6 @@ namespace PagePal_App
             await DisplayAlert("Success", "Book updated successfully!", "OK");
             await Navigation.PopAsync();
         }
+
     }
 }

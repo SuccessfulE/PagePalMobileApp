@@ -37,23 +37,20 @@ namespace PagePal_App
             catch { }
         }
 
-        private void LoadAuthors()
+        private async void LoadAuthors()
         {
-            // Retrieve distinct authors from the database
-            var authors = App.Database.GetDistinctAuthorsAsync().Result;
-
-            // Check if there are authors in the database
+            // Retrieve distinct authors from the database asynchronously
+            var authors = await App.Database.GetDistinctAuthorsAsync();
             if (authors.Any())
             {
-                // Populate the Author Picker with the retrieved authors
                 foreach (var author in authors)
                 {
-                    authorPicker.Items.Add(string.Format("{0} {1}", author.AuthorFirstName, author.AuthorLastName));
+                    authorPicker.Items.Add(string.Format("{0} {1}", author.FirstName, author.LastName));
                 }
             }
             else
             {
-                // If no authors in the database, provide a default placeholder
+                // If no authors in the database
                 authorPicker.Items.Add("No Authors Found");
             }
         }

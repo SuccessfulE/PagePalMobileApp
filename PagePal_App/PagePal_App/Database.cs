@@ -23,10 +23,22 @@ namespace PagePal_App
             return _database.Table<BookTables.Books>().ToListAsync();
         }
         //Get Authors
-        public Task<List<BookTables.Books>> GetDistinctAuthorsAsync()
+        /*  public Task<List<BookTables.Books>> GetDistinctAuthorsAsync()
+          {
+              return _database.Table<BookTables.Books>().ToListAsync();
+          }*/
+        public async Task<List<(string FirstName, string LastName)>> GetDistinctAuthorsAsync()
         {
-            return _database.Table<BookTables.Books>().ToListAsync();
+            var books = await _database.Table<BookTables.Books>().ToListAsync();
+            var distinctAuthors = books
+                .GroupBy(book => new { book.AuthorFirstName, book.AuthorLastName })
+                .Select(group => (FirstName: group.Key.AuthorFirstName, LastName: group.Key.AuthorLastName))
+                .ToList();
+
+            return distinctAuthors;
         }
+
+
         //Get Genres
         public async Task<List<string>> GetDistinctGenresAsync()
         {
