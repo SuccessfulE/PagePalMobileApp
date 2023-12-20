@@ -6,7 +6,6 @@
 
     <StackLayout Margin="20,35,20,20">
         <Button Text="Pick Random Book" Clicked="OnButtonClicked" />
-        <Button Text="Delete Database" Clicked="OnButtonDelete" />
 
         <CollectionView x:Name="collectionView" IsVisible="False">
             <CollectionView.ItemTemplate>
@@ -16,8 +15,6 @@
                         <Label Text="{Binding AuthorFirstName}" TextColor="Silver" FontSize="Small" />
                         <Label Text="{Binding AuthorLastName, StringFormat=' {0}'}" TextColor="Silver" FontSize="Small" />
                         <Label Text="{Binding Genre}" TextColor="Silver" FontSize="Small" />
-                        <Label Text="{Binding Publication}" TextColor="Silver" FontSize="Small" />
-                        <Label Text="{Binding yearEntry, StringFormat='Year: {0:yyyy}'}" TextColor="Silver" FontSize="Small" />
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

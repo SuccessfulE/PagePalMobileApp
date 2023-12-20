@@ -46,12 +46,5 @@ namespace PagePal_App
                 DisplayAlert("Error", "No books available in the database.", "OK");
             }
         }
-
-
-    private async void OnButtonDelete(object sender, EventArgs e)
-        {
-            await App.Database.DeleteAllItems<BookTables.Books>();
-            BookCollection.Clear();
-        }
     }
 }

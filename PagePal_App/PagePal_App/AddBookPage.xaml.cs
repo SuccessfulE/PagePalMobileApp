@@ -57,6 +57,7 @@ namespace PagePal_App
 
                 // Display a success message
                 await DisplayAlert("Success", "Book saved successfully!", "OK");
+                await Navigation.PopAsync();
 
                 // Clear all fields after successful save
                 ClearFields();
@@ -78,6 +79,7 @@ namespace PagePal_App
             _bewks.AuthorFirstName = AuthorFirstName.Text;
             _bewks.Genre = genreEntry.Text;
             await App.Database.UpdateBook(_bewks);
+            await DisplayAlert("Success", "Book updated successfully!", "OK");
             await Navigation.PopAsync();
         }
 
