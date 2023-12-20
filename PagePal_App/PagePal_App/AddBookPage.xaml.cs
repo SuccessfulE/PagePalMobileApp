@@ -57,10 +57,11 @@ namespace PagePal_App
 
                 // Display a success message
                 await DisplayAlert("Success", "Book saved successfully!", "OK");
-                await Navigation.PopAsync();
 
                 // Clear all fields after successful save
                 ClearFields();
+
+                await Navigation.PopAsync();
             }
         }
 

@@ -71,7 +71,7 @@ namespace PagePal_App
                 email = email.Text,
                 UFirstName = firstname.Text,
                 ULastName = lastname.Text,
-                UPassword = password.Text // Consider hashing the password for security
+                UPassword = password.Text 
             };
 
             await App.Database.SaveUserAsync(newUser);
